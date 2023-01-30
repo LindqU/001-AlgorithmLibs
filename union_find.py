@@ -27,8 +27,8 @@ class UnionFind:
         Args:
             element_num (int): 要素数を記載。
         """
-        self.element_num = element_num
-        self.parents: List = [-1] * element_num
+        self.element_num = element_num + 1
+        self.parents: List = [-1] * element_num + 1
 
     def union(self, element1: int, element2: int) -> None:
         """統合処理を行う。
@@ -106,4 +106,8 @@ class UnionFind:
         Returns:
             List[int]: _description_
         """
-        return list()
+        res = []
+        for menber in self.parents[1:]:
+            if menber < 0:
+                res.append(menber)
+        return res
